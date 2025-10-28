@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c477515a3013342a216b270e2c988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  open_sides: 010101010101
+  paths: 000000000000000000000000000000000000000000000000
   rarity: 0
   biome: 2
   t_name: 
@@ -383,6 +383,14 @@ MonoBehaviour:
   - {fileID: 8181628986739451347}
   - {fileID: 2357375891232411799}
   border_obj: {fileID: 3317426362512825116}
+  sprite: {fileID: 7138453147752625334}
+  connected_tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8890725223109312490
 GameObject:
   m_ObjectHideFlags: 0

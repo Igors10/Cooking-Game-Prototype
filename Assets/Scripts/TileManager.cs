@@ -11,6 +11,9 @@ public class TileManager : MonoBehaviour
     [HideInInspector] public List<GameObject> draft_markers = new List<GameObject>();
 
     [SerializeField] GameObject marker_prefab;
+    [SerializeField] DraftingWindow draft;
+    Vector3 next_tile_position;
+    Quaternion next_tile_rotation;
 
     private void Start()
     {
@@ -35,11 +38,14 @@ public class TileManager : MonoBehaviour
         return tile_distance;
     }
 
-    public void ActivateDraftChoices(Tile tile)
+    public void ActivateDraftMarkers(Tile tile)
     {
+        // Temporary setting current tile here
+        GameManager.instance.current_tile = tile;
+
         for (int i = 0; i < 6; i++)
         {
-            if (tile.open_sides[i] == false) continue; // there is no pathway
+            if (tile.paths[i] == Path.BLOCKED) continue; // there is no pathway
             if (tile.connected_tiles[i] != null) continue; // there is another tile already
 
             // Spawning the marker near the correct tile
@@ -51,18 +57,32 @@ public class TileManager : MonoBehaviour
             draft_markers[i].transform.rotation = Quaternion.Euler(0, 0, marker_rotation);
 
             // Positionning the marker correctly
-            //transform.Translate(Vector3.up * FindTileDistance(tile), Space.Self);
             draft_markers[i].transform.position += draft_markers[i].transform.up * FindTileDistance(tile);
         }
     }
 
-    public void NewDraft()
+    public void NewDraft(Vector3 tile_position, Quaternion tile_rotation)
     {
-        DeactivateMarkers();
+        next_tile_position = tile_position;
+        next_tile_rotation = tile_rotation;
 
-        // logic for new draft choice
+        draft.gameObject.SetActive(true);
+        draft.ActivateDraft(FetchTileOptions(GameManager.instance.current_tile), tile_position);  //<< Finished here
+
+        //DeactivateMarkers();
     }
 
+    Tile[] FetchTileOptions(Tile tile_from)
+    {
+        // make logic for the game to know which tiles to ask for
+
+        return null;
+    }
+
+    public void ChooseTile(Tile tile)
+    {
+
+    }
     public void DeactivateMarkers()
     {
         foreach (GameObject marker in draft_markers)

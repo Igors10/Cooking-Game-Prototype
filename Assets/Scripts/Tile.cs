@@ -17,10 +17,16 @@ public enum Biome
     FORAGELANDS
 }
 
+public enum Path
+{
+    OPEN, 
+    BLOCKED,
+    WATER
+}
 public class Tile : MonoBehaviour
 {
     [Header("Tile properties")] // properties of each individual tiles
-    public bool[] open_sides;
+    public Path[] paths;
     public Rarity rarity;
     public Biome biome;
     public string t_name;
@@ -30,6 +36,7 @@ public class Tile : MonoBehaviour
     public GameObject[] sides;
     [SerializeField] GameObject[] borders;
     [SerializeField] GameObject border_obj;
+    public SpriteRenderer sprite; 
 
     [Header("Object refs")] // references to other gameObjects
     public Tile[] connected_tiles = new Tile[6];
@@ -41,7 +48,7 @@ public class Tile : MonoBehaviour
         tile_manager.tiles.Add(this);
 
         // After initializing draft choices are iniciated right away
-        tile_manager.ActivateDraftChoices(this);
+        tile_manager.ActivateDraftMarkers(this);
     }
 
 

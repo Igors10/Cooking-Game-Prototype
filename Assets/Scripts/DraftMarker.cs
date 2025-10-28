@@ -49,7 +49,7 @@ public class DraftMarker : MonoBehaviour
     private void OnMouseUp()
     {
         // Drafting a new tile in the picked spot
-        GameManager.instance.tile_manager.NewDraft();
+        GameManager.instance.tile_manager.NewDraft(transform.position, transform.localRotation);
     }
 
 }
