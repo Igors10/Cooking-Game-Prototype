@@ -5,7 +5,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public TileManager tile_manager;
-    public Tile current_tile; // WIP thing, needs to be assigned
+    [HideInInspector] public Tile current_tile; // WIP thing, needs to be assigned
+
+    [Header("Game parameters")]
+    public float uncommon_tile_chance;
+    public float rare_tile_chance;
 
     private void Awake()
     {

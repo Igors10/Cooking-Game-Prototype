@@ -6,6 +6,7 @@ public class DraftingChoice : MonoBehaviour
     SpriteRenderer sprite;
     Vector3 default_size;
     Vector3 hovered_size;
+    [SerializeField] DraftingWindow drafting_window;
 
     private void Start()
     {
@@ -33,6 +34,6 @@ public class DraftingChoice : MonoBehaviour
     private void OnMouseUp()
     {
         GameManager.instance.tile_manager.ChooseTile(tile);
-
+        drafting_window.DeactivateDraft();
     }
 }

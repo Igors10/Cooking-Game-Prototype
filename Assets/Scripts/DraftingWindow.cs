@@ -18,6 +18,6 @@ public class DraftingWindow : MonoBehaviour
     }
     public void DeactivateDraft()
     {
-
+        this.gameObject.SetActive(false);
     }
 }

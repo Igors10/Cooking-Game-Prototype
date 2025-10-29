@@ -47,6 +47,9 @@ public class Tile : MonoBehaviour
         tile_manager = GameManager.instance.tile_manager;
         tile_manager.tiles.Add(this);
 
+        // Temporary setting current tile here
+        GameManager.instance.current_tile = this;
+
         // After initializing draft choices are iniciated right away
         tile_manager.ActivateDraftMarkers(this);
     }

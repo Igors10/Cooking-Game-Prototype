@@ -40,9 +40,6 @@ public class TileManager : MonoBehaviour
 
     public void ActivateDraftMarkers(Tile tile)
     {
-        // Temporary setting current tile here
-        GameManager.instance.current_tile = tile;
-
         for (int i = 0; i < 6; i++)
         {
             if (tile.paths[i] == Path.BLOCKED) continue; // there is no pathway
@@ -75,13 +72,36 @@ public class TileManager : MonoBehaviour
     Tile[] FetchTileOptions(Tile tile_from)
     {
         // make logic for the game to know which tiles to ask for
+        TileList all_tile_list= GetComponent<TileList>();
+        Tile[] tiles_to_return = new Tile[3];
+
+        tiles_to_return[0] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
+        tiles_to_return[1] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
+        tiles_to_return[2] = all_tile_list.GetDraftTile(GetRandomBiome(), GetRandomRarity());
 
         return null;
     }
 
+    Rarity GetRandomRarity()
+    {
+        float random_n = Random.value;
+
+        if (random_n < GameManager.instance.rare_tile_chance) return Rarity.RARE;
+        else if (random_n < GameManager.instance.uncommon_tile_chance) return Rarity.UNCOMMON;
+
+        return Rarity.BASIC;
+    }
+
+    Biome GetRandomBiome()
+    {
+        int random_biome_id = Random.Range(0, System.Enum.GetValues(typeof(Biome)).Length);
+
+        return (Biome)random_biome_id;
+    }
+
     public void ChooseTile(Tile tile)
     {
-
+        Tile new_tile = Instantiate(tile, next_tile_position, next_tile_rotation);
     }
     public void DeactivateMarkers()
     {
