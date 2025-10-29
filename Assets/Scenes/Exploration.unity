@@ -503,7 +503,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.19, y: 3.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.416}
+  m_LocalScale: {x: 2, y: 2, z: 1.416}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5906187953553890655}
@@ -528,7 +528,7 @@ MonoBehaviour:
   - {fileID: 5906187953553890656}
   - {fileID: 874127541}
   - {fileID: 1888382884}
-  floating_distance: 1
+  floating_distance: 0
 --- !u!1 &1757711646
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   to_follow: {x: 0, y: 0}
-  speed: 0.03
+  speed: 0.09
 --- !u!1001 &1888382882
 PrefabInstance:
   m_ObjectHideFlags: 0
