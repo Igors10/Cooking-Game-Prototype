@@ -15,7 +15,7 @@ public class TileManager : MonoBehaviour
     Vector3 next_tile_position;
     Quaternion next_tile_rotation;
 
-    private void Start()
+    private void Awake()
     {
         InstantiateMarkers(); // spawning draft markers
     }
@@ -66,7 +66,7 @@ public class TileManager : MonoBehaviour
         draft.gameObject.SetActive(true);
         draft.ActivateDraft(FetchTileOptions(GameManager.instance.current_tile), tile_position);  //<< Finished here
 
-        //DeactivateMarkers();
+        DeactivateMarkers();
     }
 
     Tile[] FetchTileOptions(Tile tile_from)
@@ -79,7 +79,7 @@ public class TileManager : MonoBehaviour
         tiles_to_return[1] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
         tiles_to_return[2] = all_tile_list.GetDraftTile(GetRandomBiome(), GetRandomRarity());
 
-        return null;
+        return tiles_to_return;
     }
 
     Rarity GetRandomRarity()

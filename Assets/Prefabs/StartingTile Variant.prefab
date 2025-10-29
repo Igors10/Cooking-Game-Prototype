@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6420145057742044491, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: biome
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420145057742044491, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
       propertyPath: rarity
       value: 3
       objectReference: {fileID: 0}

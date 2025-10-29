@@ -3,32 +3,35 @@ using UnityEngine;
 public class DraftingChoice : MonoBehaviour
 {
     Tile tile;
-    SpriteRenderer sprite;
-    Vector3 default_size;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Vector3 default_size;
     Vector3 hovered_size;
     [SerializeField] DraftingWindow drafting_window;
 
     private void Start()
-    {
-        default_size = transform.localScale;
+    { 
         hovered_size = default_size * 1.2f;
-        sprite = GetComponent<SpriteRenderer>();
     }
 
     public void Init(Tile stored_tile)
     {
         transform.localScale = default_size;
         tile = stored_tile;
+        // debugging
+        if (tile == null) { Debug.Log("DraftingChoice: passed tile does not exist"); }
+        if (tile.sprite == null) { Debug.Log("DraftChoice: tile's sprite does not exist"); }
+        if (sprite == null) { Debug.Log("DraftingChoice: drafting choices sprite does not exist"); }
+        // debugging
         sprite.sprite = tile.sprite.sprite;
     }
     private void OnMouseEnter()
     {
-        transform.localScale = default_size;
+        transform.localScale = hovered_size;
     }
 
     private void OnMouseExit()
     {
-        transform.localScale = hovered_size;
+        transform.localScale = default_size;
     }
 
     private void OnMouseUp()
