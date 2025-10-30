@@ -8,10 +8,13 @@ public class DraftMarker : MonoBehaviour
     Vector3 default_size;
     Vector3 hovered_size;
     SpriteRenderer sprite;
+
+    [HideInInspector] public int x = 0;
+    [HideInInspector] public int y = 0;
     void Start()
     {
         // Making the size proportionate to tile size
-        hovered_size = GameManager.instance.tile_manager.tiles[0].transform.localScale;
+        hovered_size = GameManager.instance.tile_manager.tiles[Vector2.zero].transform.localScale;
         default_size = hovered_size * 0.8f;
 
         // Setting the color
@@ -49,7 +52,7 @@ public class DraftMarker : MonoBehaviour
     private void OnMouseUp()
     {
         // Drafting a new tile in the picked spot
-        GameManager.instance.tile_manager.NewDraft(transform.position, transform.localRotation);
+        GameManager.instance.tile_manager.NewDraft(transform.position, transform.localRotation, new Vector2(x, y));
     }
 
 }

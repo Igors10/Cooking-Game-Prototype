@@ -36,7 +36,7 @@ public class DraftingChoice : MonoBehaviour
 
     private void OnMouseUp()
     {
-        GameManager.instance.tile_manager.ChooseTile(tile);
+        GameManager.instance.tile_manager.PlaceTile(tile);
         drafting_window.DeactivateDraft();
     }
 }

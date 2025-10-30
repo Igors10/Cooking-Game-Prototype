@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: t_description
       value: character begins here
       objectReference: {fileID: 0}
+    - target: {fileID: 6420145057742044491, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: initialize_on_start
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7138453147752625334, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
       propertyPath: m_Sprite
       value: 
