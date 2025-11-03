@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class TileManager : MonoBehaviour
@@ -10,8 +11,10 @@ public class TileManager : MonoBehaviour
     // Draft markers are UI elements that appear when player is offered to explore a new tile
     [HideInInspector] public List<GameObject> draft_markers = new List<GameObject>();
 
+    [Header("Prefabs and references")]
     [SerializeField] GameObject marker_prefab;
     [SerializeField] DraftingWindow draft;
+    public SpriteRenderer preview;
     Vector3 next_tile_position = Vector3.zero;
     Quaternion next_tile_rotation = Quaternion.Euler(0,0,0);
     Vector2 next_tile_coords = Vector2.zero;
@@ -96,8 +99,13 @@ public class TileManager : MonoBehaviour
         next_tile_rotation = tile_rotation;
         next_tile_coords = tile_coordinates;
 
+        // Activating Draft UI
         draft.gameObject.SetActive(true);
-        draft.ActivateDraft(FetchTileOptions(GameManager.instance.current_tile), tile_position);  //<< Finished here
+        draft.ActivateDraft(FetchTileOptions(GameManager.instance.current_tile), tile_position);
+
+        // Activating preview tile
+        preview.transform.position = tile_position;
+        preview.transform.rotation = tile_rotation;
 
         DeactivateMarkers();
     }
@@ -108,9 +116,21 @@ public class TileManager : MonoBehaviour
         TileList all_tile_list= GetComponent<TileList>();
         Tile[] tiles_to_return = new Tile[3];
 
+        // First tile is any tile of the same biome
         tiles_to_return[0] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
-        tiles_to_return[1] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
-        tiles_to_return[2] = all_tile_list.GetDraftTile(GetRandomBiome(), GetRandomRarity());
+
+        // Second tile cannot dublicate first one
+        do
+        {
+            tiles_to_return[1] = all_tile_list.GetDraftTile(tile_from.biome, GetRandomRarity());
+        } while (tiles_to_return[1] == tiles_to_return[0]);
+
+        // Third tile cannot be of the same biome as first two
+        do
+        {
+            tiles_to_return[2] = all_tile_list.GetDraftTile(GetRandomBiome(), GetRandomRarity());
+        } while (tiles_to_return[2].biome == tiles_to_return[1].biome);
+        
 
         return tiles_to_return;
     }

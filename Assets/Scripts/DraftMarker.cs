@@ -16,6 +16,7 @@ public class DraftMarker : MonoBehaviour
         // Making the size proportionate to tile size
         hovered_size = GameManager.instance.tile_manager.tiles[Vector2.zero].transform.localScale;
         default_size = hovered_size * 0.8f;
+        transform.localScale = default_size;
 
         // Setting the color
         sprite = GetComponent<SpriteRenderer>();
@@ -26,6 +27,7 @@ public class DraftMarker : MonoBehaviour
     {
         sprite.color = default_color;
         sprite.size = default_size;
+        transform.localScale = default_size;
         this.gameObject.SetActive(false);
     }
 
