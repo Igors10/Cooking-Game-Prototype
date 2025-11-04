@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Shining berries_0: 3292174021452163418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

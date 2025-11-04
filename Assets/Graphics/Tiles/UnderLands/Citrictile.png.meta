@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Citrictile_0: 9188824031490434988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
