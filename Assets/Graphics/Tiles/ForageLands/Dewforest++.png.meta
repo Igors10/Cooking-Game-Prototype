@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dewforest++_0: -6973775571119117813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

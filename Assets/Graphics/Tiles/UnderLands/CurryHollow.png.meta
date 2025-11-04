@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CurryHollow_0: 7148884401343707421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

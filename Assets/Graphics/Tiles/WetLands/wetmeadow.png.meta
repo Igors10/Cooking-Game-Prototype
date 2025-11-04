@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wetmeadow_0: -7583755334771838860
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
