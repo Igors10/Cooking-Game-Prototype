@@ -634,7 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   to_follow: {x: 0, y: 0}
   speed: 0.09
-  y_offset: -4
+  y_offset: -0.5
 --- !u!1 &1776711534
 GameObject:
   m_ObjectHideFlags: 0

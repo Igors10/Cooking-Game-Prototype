@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2445701292153359054, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445701292153359054, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445701292153359054, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420145057742044491, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
       propertyPath: biome
       value: 0
@@ -24,6 +36,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7058578813444432493, guid: 296fd3af4dac60448a2b6f2718f7f2ff, type: 3}
+    - target: {fileID: 7138453147752625334, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7194019746204974222, guid: 6427b006bb43f3c4697a6ccd0f4bab9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
