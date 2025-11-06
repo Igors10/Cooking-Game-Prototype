@@ -14,7 +14,8 @@ public class TileManager : MonoBehaviour
     [Header("Prefabs and references")]
     [SerializeField] GameObject marker_prefab;
     [SerializeField] GameObject tile_highlight;
-    [SerializeField] DraftingWindow draft;
+    [SerializeField] GameObject tiles_parent;
+    public DraftingWindow draft;
     public SpriteRenderer preview;
     Vector3 next_tile_position = Vector3.zero;
     Quaternion next_tile_rotation = Quaternion.Euler(0,0,0);
@@ -179,7 +180,7 @@ public class TileManager : MonoBehaviour
 
     public void PlaceTile(Tile tile) // Spawning the tile that the player chooses
     {
-        Tile new_tile = Instantiate(tile, next_tile_position, next_tile_rotation);
+        Tile new_tile = Instantiate(tile, next_tile_position, next_tile_rotation, tiles_parent.transform);
         new_tile.InitTile((int)next_tile_coords.x, (int)next_tile_coords.y); // setting tile coordinates
     }
     public void DeactivateMarkers()

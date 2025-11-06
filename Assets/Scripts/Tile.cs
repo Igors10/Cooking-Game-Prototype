@@ -66,9 +66,6 @@ public class Tile : MonoBehaviour
         tile_manager = GameManager.instance.tile_manager;
         tile_manager.tiles.Add(new Vector2(x, y), this);
 
-        // Temporary setting current tile here
-        GameManager.instance.current_tile = this;
-
         // Check if there are any tiles around that this tile could connect to
         CheckTilesAround();
 
@@ -174,6 +171,9 @@ public class Tile : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (!GameManager.instance.ExplorationEnabled()) return;
+
+        tile_manager.HighlightTile(this, false);
         tile_manager.MovePlayer(this);
     }
 }
