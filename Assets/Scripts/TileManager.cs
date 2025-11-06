@@ -31,7 +31,7 @@ public class TileManager : MonoBehaviour
     {
         for (int a = 0; a < 6; a++)
         {
-            GameObject new_marker_prefab = Instantiate(marker_prefab, transform.position, Quaternion.identity, transform);
+            GameObject new_marker_prefab = Instantiate(marker_prefab, transform.position, Quaternion.Euler(90f, 0, 0), transform);
             draft_markers.Add(new_marker_prefab);
             new_marker_prefab.SetActive(false);
         }
@@ -59,7 +59,11 @@ public class TileManager : MonoBehaviour
 
             // Setting markers rotation
             float marker_rotation = 180.0f - 60.0f * i + tile.transform.eulerAngles.z;
-            draft_markers[i].transform.rotation = Quaternion.Euler(0, 0, marker_rotation);
+            //draft_markers[i].transform.rotation = Quaternion.Euler(90f, 0, marker_rotation);
+            //draft_markers[i].transform.rotation = Quaternion.LookRotation(-draft_markers[i].transform.forward);
+            draft_markers[i].transform.Rotate(new Vector3(0, 0, marker_rotation), Space.Self);
+
+
 
             // Positionning the marker correctly
             draft_markers[i].transform.position += draft_markers[i].transform.up * FindTileDistance(tile);

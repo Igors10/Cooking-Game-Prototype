@@ -80,6 +80,10 @@ public class Tile : MonoBehaviour
         }
 
         Debug.Log("Tile: New Tile placed with coords: " + x + ", " + y);
+        Debug.Log("---------- Tile " + t_name + " Rotation -----------");
+        Debug.Log("Euler x: " + transform.eulerAngles.x + "Euler y: " + transform.eulerAngles.y + "Euler z: " + transform.eulerAngles.z);
+        Debug.Log("Rotation x: " + transform.rotation.x + "Rotation y: " + transform.rotation.y + "Rotation z: " + transform.rotation.z);
+        Debug.Log("---------------------------------------------------");
     }
 
     void SetEntrancePoint()
