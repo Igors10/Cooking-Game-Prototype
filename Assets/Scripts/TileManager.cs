@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour
 
     [Header("Prefabs and references")]
     [SerializeField] GameObject marker_prefab;
+    [SerializeField] GameObject tile_highlight;
     [SerializeField] DraftingWindow draft;
     public SpriteRenderer preview;
     Vector3 next_tile_position = Vector3.zero;
@@ -67,6 +68,30 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // *** Moving player in between tiles
+    // =========================================================
+    public void HighlightTile(Tile tile_to_highlight, bool enable) // Highlight effect
+    {
+        if (tile_to_highlight == GameManager.instance.current_tile
+            || tile_to_highlight == null
+            || draft.gameObject.activeSelf == true) return; // no highlighting while drafting and you cant move to the same tile you're at
+
+        tile_highlight.SetActive(enable);
+        if (!enable) return;
+
+        tile_highlight.transform.position = tile_to_highlight.transform.position;
+    }
+
+    public void MovePlayer(Tile tile_to_move)
+    {
+        GameManager.instance.player.MoveTo(tile_to_move);
+        DeactivateMarkers();
+        ActivateDraftMarkers(tile_to_move);
+    }
+
+    // =========================================================
+
     public void NewMarkerCoords(DraftMarker marker, Tile tile) // temporary solution for dynamically allocating x and y coords to a marker
     {
         //                          bottom               bottom left          top left            top               top right            bottom right
@@ -107,7 +132,7 @@ public class TileManager : MonoBehaviour
         preview.transform.position = tile_position;
         preview.transform.rotation = tile_rotation;
 
-        DeactivateMarkers();
+        //DeactivateMarkers();
     }
 
     Tile[] FetchTileOptions(Tile tile_from)

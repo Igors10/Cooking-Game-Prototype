@@ -55,6 +55,7 @@ public class DraftMarker : MonoBehaviour
     {
         // Drafting a new tile in the picked spot
         GameManager.instance.tile_manager.NewDraft(transform.position, transform.localRotation, new Vector2(x, y));
+        gameObject.SetActive(false);
     }
 
 }

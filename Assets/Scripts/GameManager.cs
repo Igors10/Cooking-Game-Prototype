@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public TileManager tile_manager;
+    public Player player;
     [HideInInspector] public Tile current_tile; // WIP thing, needs to be assigned
 
     [Header("Game parameters")]

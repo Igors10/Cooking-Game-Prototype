@@ -76,7 +76,11 @@ public class Tile : MonoBehaviour
         SetEntrancePoint();
 
         // After initializing draft choices are initiated right away
-        tile_manager.ActivateDraftMarkers(this);
+        if (initialize_on_start)
+        {
+            tile_manager.ActivateDraftMarkers(this);
+            GameManager.instance.current_tile = this;
+        }
 
         Debug.Log("Tile: New Tile placed with coords: " + x + ", " + y);
     }
@@ -156,5 +160,20 @@ public class Tile : MonoBehaviour
     {
         int connected_tile_index = (int)Mathf.Repeat(entrance_point_id + side_index, 6);
         return connected_tiles[connected_tile_index];
+    }
+
+    void OnMouseEnter()
+    {
+        tile_manager.HighlightTile(this, true);
+    }
+
+    private void OnMouseExit()
+    {
+        tile_manager.HighlightTile(this, false);
+    }
+
+    private void OnMouseUp()
+    {
+        tile_manager.MovePlayer(this);
     }
 }
