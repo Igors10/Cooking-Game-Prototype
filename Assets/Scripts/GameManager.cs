@@ -16,4 +16,12 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
     }
+
+    // Checks if player can move around tiles and draft new tiles
+    public bool ExplorationEnabled()
+    {
+        if (tile_manager.draft.gameObject.activeSelf) return false; // exploration locked while drafting
+
+        return true;
+    }
 }

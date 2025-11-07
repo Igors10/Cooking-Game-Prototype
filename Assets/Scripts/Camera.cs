@@ -15,7 +15,7 @@ public class Camera : MonoBehaviour
     }
     void Follow()
     {
-        to_follow = GameManager.instance.current_tile.transform.position;
+        to_follow = GameManager.instance.player.transform.position;
         if (to_follow == null) return;
         Vector2 new_position = new Vector2(to_follow.x, to_follow.y);
         transform.position = Vector2.Lerp(transform.position, to_follow, speed);
