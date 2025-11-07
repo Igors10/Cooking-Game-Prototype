@@ -44,7 +44,7 @@ public class Tile : MonoBehaviour
     [Header("Object refs")] // references to other gameObjects
     public Tile[] connected_tiles = new Tile[6];
     TileManager tile_manager;
-    [HideInInspector] public int entrance_point_id = 0;
+    public int entrance_point_id = 0;
 
     [Header("misc")]
     [SerializeField] bool initialize_on_start;
@@ -88,10 +88,12 @@ public class Tile : MonoBehaviour
 
     void SetEntrancePoint()
     {
-        entrance_point_id = (6 - (int)Mathf.Repeat(transform.eulerAngles.z, 360f) / 60) % 6;
+        //entrance_point_id = (6 - (int)Mathf.Repeat(transform.eulerAngles.y, 360f) / 60) % 6;
+        float y = transform.eulerAngles.y;
+        entrance_point_id = ((int)Mathf.Round((y % 360f) / 60f)) % 6;
     }
 
-    void CheckTilesAround() // checking for any neightbor tiles
+        void CheckTilesAround() // checking for any neightbor tiles
     {
         Vector2[] coords_around = GetCoordsAround();
         for (int a = 0; a < coords_around.Length; a++)

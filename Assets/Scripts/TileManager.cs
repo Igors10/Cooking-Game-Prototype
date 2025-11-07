@@ -58,11 +58,10 @@ public class TileManager : MonoBehaviour
             draft_markers[i].transform.position = tile.transform.position;
 
             // Setting markers rotation
-            float marker_rotation = 180.0f - 60.0f * i + tile.transform.eulerAngles.z;
-            //draft_markers[i].transform.rotation = Quaternion.Euler(90f, 0, marker_rotation);
-            //draft_markers[i].transform.rotation = Quaternion.LookRotation(-draft_markers[i].transform.forward);
-            draft_markers[i].transform.Rotate(new Vector3(0, 0, marker_rotation), Space.Self);
-
+            float marker_rotation = 180.0f - 60.0f * i - 60.0f * tile.entrance_point_id;
+            draft_markers[i].transform.rotation = Quaternion.Euler(90f, 0, marker_rotation);
+            
+            Debug.Log("TileManager: -- NEW MARKER ("+i+") -- eulerY: " + draft_markers[i].transform.eulerAngles.y + ", eulerZ:" + draft_markers[i].transform.eulerAngles.z);
 
 
             // Positionning the marker correctly
@@ -105,7 +104,7 @@ public class TileManager : MonoBehaviour
 
         bool marker_x_equal = (Mathf.Abs(marker.transform.position.x - tile.transform.position.x) < 0.001f);
         bool marker_x_bigger = (marker.transform.position.x > tile.transform.position.x);
-        bool marker_y_bigger = (marker.transform.position.y > tile.transform.position.y);
+        bool marker_y_bigger = (marker.transform.position.z > tile.transform.position.z);
 
         if (marker_x_equal && marker_y_bigger) coord_mod = new Vector2(0, +1);
         else if (marker_x_equal && !marker_y_bigger) coord_mod = new Vector2(0, -1);
